@@ -1,0 +1,501 @@
+/* ==========================================================================
+   AI ACT ACADEMY — CONȚINUT (separat de motorul aplicației)
+   Sursa legală: Regulamentul (UE) 2024/1689 ("AI Act"), JO L, 12.7.2024,
+   astfel cum a fost modificat prin Regulamentul (UE) 2026/1744
+   ("Digital Omnibus privind IA"), JO L, 24.7.2026, intrat în vigoare 27.7.2026.
+   Acest fișier este structura editabilă de conținut — modulele, lecțiile,
+   exercițiile, glosarul, calendarul și regulile de calcul pot fi actualizate
+   aici, fără a atinge motorul aplicației (index.html).
+   ========================================================================== */
+
+const CONTENT = {
+
+meta: {
+  regulationTitle: "Regulamentul (UE) 2024/1689 privind inteligența artificială",
+  regulationShort: "AI Act",
+  amendingTitle: "Regulamentul (UE) 2026/1744 („Digital Omnibus privind IA”)",
+  inForceDate: "1 august 2024",
+  amendingInForceDate: "27 iulie 2026",
+  contentReviewedAt: "17 septembrie 2026",
+  eurLexConsolidated: "https://eur-lex.europa.eu/legal-content/RO/TXT/?uri=CELEX:02024R1689-20260727",
+  disclaimerShort: "Conținut educațional, nu constituie consultanță juridică. Verifică întotdeauna varianta consolidată curentă pe eur-lex.europa.eu înainte de a lua decizii de conformitate.",
+  disclaimerLong: "Conținut valabil la data de 17 septembrie 2026, pe baza formei consolidate din 27.07.2026 a Regulamentului (UE) 2024/1689, astfel cum a fost modificat prin Regulamentul (UE) 2026/1744. Comisia Europeană poate emite în continuare acte delegate și de punere în aplicare care detaliază sau modifică unele obligații — aceasta NU este varianta finală, definitivă a legii.",
+  jurisprudenceNote: "AI Act este un regulament recent, aplicat eșalonat — nu există încă o practică judiciară consistentă CJUE/CEDO pe fondul lui. Referințele jurisprudențiale din această aplicație provin din domenii conexe (protecția datelor, decizii automatizate, date biometrice) și sunt etichetate explicit ca „context conex, nu jurisprudență directă pe AI Act”."
+},
+
+roles: [
+  {
+    id: "furnizor",
+    label: "Furnizor de sisteme de IA",
+    icon: "layers",
+    description: "Compania ta dezvoltă sau introduce pe piață sisteme de IA sub numele/marca proprie.",
+    emphasizedModules: [1,2,3,4,6,8]
+  },
+  {
+    id: "implementator",
+    label: "Implementator (companie care folosește IA)",
+    icon: "briefcase",
+    description: "Compania ta folosește sisteme de IA dezvoltate de altcineva, în activitatea proprie.",
+    emphasizedModules: [1,2,3,4,5,8]
+  },
+  {
+    id: "conformitate",
+    label: "Responsabil legal-conformitate (DPO / jurist)",
+    icon: "clipboard",
+    description: "Răspunzi de conformitatea companiei cu reglementările — inclusiv AI Act.",
+    emphasizedModules: [1,2,3,4,5,6,7,8,9]
+  },
+  {
+    id: "product-tech",
+    label: "Product & Tech",
+    icon: "code",
+    description: "Construiești sau iei decizii de produs pentru sisteme care folosesc IA.",
+    emphasizedModules: [1,2,3,4,5,6,9]
+  }
+],
+
+modules: [
+{
+  id: 0, status: "skeleton", icon: "target", color: "neutral",
+  title: "De ce există AI Act",
+  subtitle: "Context și scop",
+  summary: "Regulamentul (UE) 2024/1689 urmărește, conform art. 1, să îmbunătățească funcționarea pieței interne și să promoveze adoptarea unei IA centrate pe om și de încredere, asigurând totodată un nivel ridicat de protecție a sănătății, siguranței și drepturilor fundamentale consacrate în Carta drepturilor fundamentale a UE — inclusiv democrația, statul de drept și protecția mediului — împotriva efectelor nocive ale sistemelor de IA, sprijinind în același timp inovarea.",
+  articles: ["art. 1"],
+  teaser: "Lecție completă în pregătire. Include: obiectivele regulamentului, abordarea bazată pe risc, echilibrul între inovare și protecția drepturilor fundamentale."
+},
+{
+  id: 1, status: "skeleton", icon: "scope", color: "neutral",
+  title: "Cui i se aplică legea",
+  subtitle: "Domeniu de aplicare (art. 2) și definiții esențiale (art. 3)",
+  summary: "AI Act se aplică furnizorilor și implementatorilor de sisteme de IA din UE, dar și celor din afara UE ale căror sisteme sunt folosite pe piața UE (efect extrateritorial — art. 2). Definițiile-cheie din art. 3 (sistem de IA, furnizor, implementator, model de IA de uz general, punere pe piață vs. punere în funcțiune) sunt disponibile integral în Glosarul interactiv.",
+  articles: ["art. 2", "art. 3"],
+  teaser: "Lecție completă în pregătire. Consultă între timp Glosarul interactiv (din meniul Instrumente) — conține deja toate definițiile esențiale din art. 3, verificate."
+},
+{
+  id: 2, status: "full", icon: "prohibited", color: "danger",
+  title: "Practicile interzise",
+  subtitle: "Art. 5 — cele 8 categorii + noile interdicții 2026",
+  summary: "Art. 5 din AI Act interzice 8 categorii de practici de IA considerate a prezenta un risc inacceptabil, aplicabile din 2 februarie 2025. Regulamentul (UE) 2026/1744 a adăugat, de la 2 decembrie 2026, alte două interdicții.",
+  articles: ["art. 5"],
+  lessons: [
+    {
+      id: "2-1", title: "Cele 8 practici interzise (2024)",
+      xp: 40,
+      cards: [
+        { type: "info", title: "Ce este art. 5?", body: "Art. 5 alin. (1) din AI Act listează practicile de IA considerate a prezenta un „risc inacceptabil” — sunt pur și simplu interzise pe piața UE, indiferent de sector. Se aplică din 2 februarie 2025 (o dată din calendarul original, neschimbată de Omnibus 2026). Încălcarea lor atrage cea mai mare amendă din regulament: până la 35.000.000 EUR sau 7% din cifra de afaceri mondială." }
+      ],
+      exercises: [
+        {
+          type: "matchArticle",
+          prompt: "O aplicație de jocuri folosește tehnici audio subliminale, sub pragul de percepție conștientă, pentru a împinge utilizatorii spre achiziții în joc, alterându-le comportamentul într-un mod care le produce un prejudiciu semnificativ.",
+          options: [
+            { key:"a", label:"lit. (a) — tehnici subliminale/manipulative" },
+            { key:"b", label:"lit. (b) — exploatarea vulnerabilităților" },
+            { key:"c", label:"lit. (c) — scoring social" },
+            { key:"e", label:"lit. (e) — extragerea nețintită a imaginilor faciale" }
+          ],
+          correct: "a",
+          explanation: "Art. 5 alin. (1) lit. (a) interzice sistemele de IA care folosesc tehnici subliminale, manipulative sau înșelătoare, dincolo de conștiința unei persoane, cu scopul sau efectul de a-i distorsiona semnificativ comportamentul, cauzând un prejudiciu semnificativ."
+        },
+        {
+          type: "truefalse",
+          prompt: "Un sistem de IA care țintește persoane vârstnice cu dizabilități cognitive pentru a le vinde produse financiare pe care nu le înțeleg, exploatând exact această vulnerabilitate, intră sub incidența art. 5 alin. (1) lit. (b).",
+          correct: true,
+          explanation: "Corect. Lit. (b) interzice exploatarea vulnerabilităților legate de vârstă, dizabilitate sau situație socio-economică specifică, atunci când scopul sau efectul este distorsionarea semnificativă a comportamentului, cu prejudiciu."
+        },
+        {
+          type: "mcq",
+          prompt: "O autoritate publică folosește un sistem de IA care evaluează cetățenii pe baza comportamentului social și îi tratează defavorabil în contexte complet nelegate de contextul în care a fost generat scorul. Ce practică este aceasta?",
+          options: ["Clasificare biometrică (lit. g)", "Scoring social (lit. c)", "Evaluarea riscului de infracțiune (lit. d)", "Recunoașterea emoțiilor (lit. f)"],
+          correct: 1,
+          explanation: "Art. 5 alin. (1) lit. (c) interzice scoring-ul social de către autorități publice (sau în numele lor) atunci când duce la un tratament defavorabil nejustificat sau disproporționat, în contexte diferite de cele în care datele au fost generate."
+        },
+        {
+          type: "truefalse",
+          prompt: "Este interzisă orice evaluare, prin IA, a riscului ca o persoană să comită o infracțiune — indiferent de metodă.",
+          correct: false,
+          explanation: "Nu chiar. Art. 5 alin. (1) lit. (d) interzice evaluarea riscului de infracțiune bazată EXCLUSIV pe profilarea persoanei sau pe trăsături de personalitate. Legea permite în continuare sistemele de IA care sprijină evaluarea umană bazată pe fapte obiective și verificabile, direct legate de o activitate infracțională."
+        },
+        {
+          type: "matchArticle",
+          prompt: "O companie construiește o bază de date de recunoaștere facială extrăgând, fără consimțământ și nețintit, imagini de pe internet și din înregistrări video de supraveghere (CCTV).",
+          options: [
+            { key:"e", label:"lit. (e) — extragere nețintită de imagini faciale" },
+            { key:"h", label:"lit. (h) — identificare biometrică în timp real" },
+            { key:"g", label:"lit. (g) — clasificare biometrică pe categorii sensibile" },
+            { key:"a", label:"lit. (a) — tehnici subliminale" }
+          ],
+          correct: "e",
+          explanation: "Art. 5 alin. (1) lit. (e) interzice crearea sau extinderea bazelor de date de recunoaștere facială prin extragerea (scraping) nețintită a imaginilor faciale de pe internet sau din înregistrări CCTV."
+        },
+        {
+          type: "mcq",
+          prompt: "O companie vrea să implementeze un sistem care detectează „nivelul de frustrare” al angajaților în call-center, pe baza tonului vocii, pentru evaluări de performanță. Este permis?",
+          options: [
+            "Da, fără restricții — e doar analiză de voce",
+            "Nu — art. 5 alin. (1) lit. (f) interzice recunoașterea emoțiilor la locul de muncă, cu excepții medicale/siguranță",
+            "Da, dacă angajații semnează un consimțământ",
+            "Nu, dar doar dacă sistemul e vândut, nu dezvoltat intern"
+          ],
+          correct: 1,
+          explanation: "Art. 5 alin. (1) lit. (f) interzice sistemele de IA care deduc emoțiile unei persoane fizice la locul de muncă și în instituțiile de învățământ, cu excepția utilizării din motive medicale sau de siguranță. Consimțământul angajatului nu înlătură interdicția — dezechilibrul de putere din relația de muncă face consimțământul, de regulă, insuficient de liber."
+        },
+        {
+          type: "truefalse",
+          prompt: "Clasificarea biometrică pentru a deduce orientarea sexuală, opiniile politice sau convingerile religioase ale unei persoane este interzisă de art. 5 alin. (1) lit. (g), cu excepția etichetării sau filtrării licite a seturilor de date biometrice în anumite contexte de aplicare a legii.",
+          correct: true,
+          explanation: "Exact — lit. (g) interzice sistemele de categorizare biometrică ce deduc rasa, opiniile politice, apartenența sindicală, convingerile religioase/filozofice, viața sexuală sau orientarea sexuală, cu o excepție limitată pentru etichetarea/filtrarea licită a datelor biometrice în aplicarea legii."
+        },
+        {
+          type: "matchArticle",
+          prompt: "Poliția folosește camere cu identificare facială în timp real, pe o piață publică, pentru a căuta un suspect de terorism, fără o autorizare prealabilă specifică prevăzută de lege.",
+          options: [
+            { key:"h", label:"lit. (h) — identificare biometrică la distanță în timp real, în spații public accesibile" },
+            { key:"d", label:"lit. (d) — evaluarea riscului de infracțiune" },
+            { key:"f", label:"lit. (f) — recunoașterea emoțiilor" },
+            { key:"c", label:"lit. (c) — scoring social" }
+          ],
+          correct: "h",
+          explanation: "Art. 5 alin. (1) lit. (h) interzice, în principiu, identificarea biometrică la distanță „în timp real” în spații public accesibile, în scopul aplicării legii. Există excepții stricte (căutarea victimelor, prevenirea unei amenințări iminente, identificarea suspecților pentru infracțiuni grave din anexa II, cu pedeapsă ≥ 4 ani), dar acestea necesită, în principiu, autorizare prealabilă."
+        }
+      ]
+    },
+    {
+      id: "2-2", title: "Noile interdicții 2026 + recapitulare",
+      xp: 35,
+      cards: [
+        { type: "info", title: "Ce s-a schimbat prin Omnibus 2026", body: "Regulamentul (UE) 2026/1744, intrat în vigoare la 27 iulie 2026, a adăugat la art. 5 alin. (1) două litere noi: (ba) și (bb). Aceste interdicții devin efectiv aplicabile de la 2 decembrie 2026 (perioadă tranzitorie). ATENȚIE: dacă ai citit despre AI Act înainte de 2026, s-ar putea să nu știi de aceste adăugiri — nu erau în textul original din 2024." },
+        { type: "info", title: "De reținut", body: "2 decembrie 2026 este și data la care expiră perioada de grație de 4 luni pentru marcarea (watermarking) conținutului sintetic al sistemelor deja pe piață la 2 august 2026, conform art. 50 — nu confunda cele două lucruri: sunt reguli diferite care, din întâmplare, devin efective în aceeași zi." }
+      ],
+      exercises: [
+        {
+          type: "matchArticle",
+          prompt: "(NOU, 2026) Un serviciu online generează imagini realiste cu părțile intime ale unei persoane identificabile, fără consimțământul liber, specific, informat și neechivoc al acesteia.",
+          options: [
+            { key:"ba", label:"lit. (ba) — conținut intim/sexual neconsimțit — NOU 2026" },
+            { key:"bb", label:"lit. (bb) — CSAM — NOU 2026" },
+            { key:"e", label:"lit. (e) — extragere nețintită de imagini faciale" },
+            { key:"a", label:"lit. (a) — tehnici subliminale" }
+          ],
+          correct: "ba",
+          explanation: "Art. 5 alin. (1) lit. (ba), introdus prin Regulamentul (UE) 2026/1744, interzice introducerea pe piață a sistemelor de IA care generează sau manipulează imagini, video sau audio realiste ale părților intime ale unei persoane fizice identificabile, fără consimțământul acesteia. Aplicabil din 2 decembrie 2026."
+        },
+        {
+          type: "mcq",
+          prompt: "Ce interzice noua lit. (bb) a art. 5, introdusă prin Omnibus 2026?",
+          options: [
+            "Deepfake-uri politice",
+            "Sisteme de IA care generează materiale de abuz sexual asupra minorilor (CSAM), în sensul Directivei 2011/93/UE",
+            "Chatboți fără marcaj de transparență",
+            "Scoring-ul social realizat de companii private"
+          ],
+          correct: 1,
+          explanation: "Art. 5 alin. (1) lit. (bb) interzice sistemele de IA care generează sau manipulează materiale ce constituie material de abuz sexual asupra copiilor, în sensul art. 2 din Directiva 2011/93/UE. Este cea mai gravă categorie de interdicție adăugată prin Omnibus 2026."
+        },
+        {
+          type: "timeline",
+          prompt: "Ordonează cronologic aceste momente legate de art. 5:",
+          items: [
+            { id:"e1", label:"Intrarea în vigoare a Regulamentului (UE) 2024/1689", date:"1 august 2024" },
+            { id:"e2", label:"Devin aplicabile cele 8 interdicții originale din art. 5", date:"2 februarie 2025" },
+            { id:"e3", label:"Intrarea în vigoare a Regulamentului (UE) 2026/1744 (Omnibus)", date:"27 iulie 2026" },
+            { id:"e4", label:"Devin aplicabile noile interdicții (ba) și (bb) + expiră grația de watermarking", date:"2 decembrie 2026" }
+          ],
+          explanation: "Reține mai ales pasul de la 2024 la 2026: legea de bază a intrat în vigoare în 2024, dar interdicțiile privind conținutul sexual neconsimțit și CSAM sunt un adaos din 2026, aplicabil abia din decembrie 2026."
+        },
+        {
+          type: "classifyRisk",
+          prompt: "O bancă folosește un sistem de IA care combină scoring social informal (rețele sociale, comportament de consum) pentru a decide cine primește credite, aplicând acest scor și în decizii de angajare ale unor filiale afiliate, în contexte nelegate de creditare.",
+          options: ["interzis", "ridicat", "limitat", "minim"],
+          correct: "interzis",
+          explanation: "Acesta descrie exact tiparul interzis de art. 5 alin. (1) lit. (c) — scoring dus dincolo de contextul în care a fost generat, cu tratament defavorabil disproporționat. Notă: interdicția lit. (c) vizează în principal actorii publici / cei ce acționează în numele lor; extinderea sa la actori privați variază pe caz — un scenariu real necesită analiză juridică individuală."
+        },
+        {
+          type: "mcq",
+          prompt: "Recapitulare: câte categorii de practici interzise conține art. 5 alin. (1), după modificările din 2026?",
+          options: ["6", "8", "10", "12"],
+          correct: 2,
+          explanation: "8 categorii originale (lit. a-h), din 2 februarie 2025, plus 2 categorii noi (lit. ba, bb) din 2 decembrie 2026 = 10 categorii în total, în forma consolidată actuală (27.07.2026)."
+        },
+        {
+          type: "flashcard",
+          front: "Art. 5 alin. (1) lit. (a)",
+          back: "Tehnici subliminale, manipulative sau înșelătoare care distorsionează comportamentul, cauzând prejudiciu semnificativ."
+        },
+        {
+          type: "flashcard",
+          front: "Art. 5 alin. (1) lit. (c)",
+          back: "Scoring social realizat de autorități publice (sau în numele lor), cu tratament defavorabil disproporționat/nejustificat."
+        },
+        {
+          type: "flashcard",
+          front: "Art. 5 alin. (1) lit. (h)",
+          back: "Identificare biometrică la distanță în timp real, în spații public accesibile, în scopul aplicării legii — cu excepții stricte, de regulă cu autorizare prealabilă."
+        },
+        {
+          type: "flashcard",
+          front: "Art. 5 alin. (1) lit. (ba) și (bb) — NOU 2026",
+          back: "(ba) conținut intim/sexual neconsimțit generat de IA; (bb) CSAM generat de IA. Aplicabile din 2 decembrie 2026, adăugate prin Reg. (UE) 2026/1744."
+        }
+      ]
+    }
+  ]
+},
+{
+  id: 3, status: "skeleton", icon: "gauge", color: "neutral",
+  title: "Clasificarea pe niveluri de risc",
+  subtitle: "Art. 6-7, anexele I și III — inacceptabil / ridicat / limitat / minim",
+  summary: "AI Act clasifică sistemele de IA în 4 niveluri de risc: inacceptabil (interzis, art. 5), ridicat (art. 6-7, cu 2 căi: componente de siguranță în produse din anexa I, sau utilizări de sine stătătoare din anexa III), limitat/transparență (art. 50) și minim (fără obligații specifice). Anexa III acoperă 8 domenii: biometrie, infrastructuri critice, educație, ocuparea forței de muncă, servicii esențiale publice/private, aplicarea legii, migrație/azil/control la frontiere și administrarea justiției/procese democratice.",
+  articles: ["art. 6", "art. 7", "anexa I", "anexa III"],
+  teaser: "Lecție completă în pregătire. Folosește între timp „Verificatorul rapid de risc” din meniul Instrumente — te ghidează, pas cu pas, spre o încadrare orientativă."
+},
+{
+  id: 4, status: "skeleton", icon: "shield", color: "neutral",
+  title: "Obligațiile pentru sisteme cu risc ridicat",
+  subtitle: "Art. 8-29",
+  summary: "Furnizorii de sisteme de IA cu risc ridicat trebuie să asigure, printre altele: un sistem de management al riscului, guvernanța datelor, documentație tehnică, păstrarea jurnalelor (logging), transparență și informare a implementatorilor, supraveghere umană, acuratețe/robustețe/securitate cibernetică. Implementatorii au obligații distincte, inclusiv — în anumite cazuri — realizarea unei evaluări a impactului asupra drepturilor fundamentale (art. 27).",
+  articles: ["art. 8", "art. 9", "art. 27"],
+  teaser: "Lecție completă în pregătire. Va acoperi separat obligațiile furnizorului față de cele ale implementatorului."
+},
+{
+  id: 5, status: "skeleton", icon: "eye", color: "neutral",
+  title: "Transparența",
+  subtitle: "Art. 50 — chatboți, deepfake-uri, conținut sintetic",
+  summary: "Art. 50 impune obligații de transparență: informarea persoanelor că interacționează cu un chatbot/sistem de IA; marcarea conținutului sintetic (deepfake audio/video/imagine) într-un mod detectabil automat; informarea persoanelor expuse unui sistem de recunoaștere a emoțiilor sau clasificare biometrică; etichetarea textelor generate de IA publicate pentru informarea publicului pe teme de interes public. Se aplică din 2 august 2026 — dată neschimbată de Omnibus pentru marea majoritate a obligațiilor, cu excepția perioadei de grație pentru marcarea sistemelor deja existente, care expiră la 2 decembrie 2026.",
+  articles: ["art. 50"],
+  teaser: "Lecție completă în pregătire."
+},
+{
+  id: 6, status: "skeleton", icon: "network", color: "neutral",
+  title: "Modele de IA de uz general (GPAI)",
+  subtitle: "Art. 51-56",
+  summary: "Modelele de IA de uz general (GPAI) au obligații de documentare tehnică și transparență față de furnizorii din aval, respectarea dreptului de autor al UE și publicarea unui rezumat al conținutului folosit la antrenare. Modelele cu „risc sistemic” (impact semnificativ pe piața UE) au obligații suplimentare: evaluarea și atenuarea riscurilor, raportarea incidentelor grave, securitate cibernetică. Aceste obligații se aplică din 2 august 2025.",
+  articles: ["art. 51", "art. 53", "art. 55"],
+  teaser: "Lecție completă în pregătire."
+},
+{
+  id: 7, status: "skeleton", icon: "institution", color: "neutral",
+  title: "Guvernanța",
+  subtitle: "Oficiul pentru IA, autoritățile naționale, Consiliul european pentru IA",
+  summary: "La nivel UE, Oficiul pentru IA (AI Office, din cadrul Comisiei) supraveghează în special modelele GPAI. Fiecare stat membru desemnează autorități naționale competente (de supraveghere a pieței și notificare). Consiliul european pentru IA reunește reprezentanți ai statelor membre pentru a asigura aplicarea coerentă a regulamentului. Aceste structuri sunt aplicabile, în cea mai mare parte, din 2 august 2025.",
+  articles: ["art. 64-70"],
+  teaser: "Lecție completă în pregătire."
+},
+{
+  id: 8, status: "full", icon: "scale", color: "warning",
+  title: "Sancțiunile",
+  subtitle: "Art. 99-101 — cifrele reale",
+  summary: "AI Act prevede 3 niveluri de amenzi administrative în funcție de gravitatea încălcării, plus reguli distincte pentru IMM-uri/startup-uri și pentru instituțiile UE.",
+  articles: ["art. 99", "art. 100", "art. 101"],
+  lessons: [
+    {
+      id: "8-1", title: "Cele trei niveluri de amenzi",
+      xp: 40,
+      cards: [
+        { type:"info", title:"Structura sancțiunilor", body:"Art. 99 stabilește 3 niveluri de amenzi administrative, în funcție de ce anume a fost încălcat. Pentru fiecare nivel, dacă încălcarea aparține unei întreprinderi (undertaking), se aplică valoarea MAI MARE dintre suma fixă în EUR și procentul din cifra de afaceri mondială anuală din exercițiul financiar precedent." }
+      ],
+      exercises: [
+        {
+          type: "mcq",
+          prompt: "Care este amenda maximă pentru încălcarea practicilor interzise de la art. 5?",
+          options: ["15.000.000 EUR sau 3% din cifra de afaceri mondială", "35.000.000 EUR sau 7% din cifra de afaceri mondială", "7.500.000 EUR sau 1% din cifra de afaceri mondială", "50.000.000 EUR, sumă fixă"],
+          correct: 1,
+          explanation: "Art. 99 alin. (3): încălcarea practicilor interzise (art. 5) este sancționată cu până la 35.000.000 EUR sau, dacă încălcarea aparține unei întreprinderi, până la 7% din cifra de afaceri mondială anuală din exercițiul financiar precedent, luându-se în calcul valoarea mai mare."
+        },
+        {
+          type: "mcq",
+          prompt: "O companie nu respectă obligațiile de transparență de la art. 50 (nu marchează conținutul generat de IA). Ce plafon de amendă riscă?",
+          options: ["35.000.000 EUR sau 7%", "15.000.000 EUR sau 3%", "7.500.000 EUR sau 1%", "Nu există sancțiune pentru art. 50"],
+          correct: 1,
+          explanation: "Art. 99 alin. (4) acoperă neconformitatea cu o serie de alte obligații (inclusiv art. 50, transparență) — amendă de până la 15.000.000 EUR sau 3% din cifra de afaceri mondială, valoarea mai mare."
+        },
+        {
+          type: "truefalse",
+          prompt: "Furnizarea de informații incorecte, incomplete sau înșelătoare către autoritățile competente se sancționează cu până la 7.500.000 EUR sau 1% din cifra de afaceri mondială.",
+          correct: true,
+          explanation: "Corect — este cel mai mic dintre cele trei plafoane (art. 99 alin. (5))."
+        },
+        {
+          type: "truefalse",
+          prompt: "Pentru IMM-uri, inclusiv startup-uri, se aplică tot valoarea mai mare dintre suma fixă și procentul din cifra de afaceri, la fel ca pentru companiile mari.",
+          correct: false,
+          explanation: "Fals — este exact invers pentru IMM-uri/startup-uri: li se aplică plafonul MAI MIC dintre cele două valori, nu cel mai mare. Este o protecție specifică pentru companiile mici."
+        },
+        {
+          type: "mcq",
+          prompt: "O instituție a UE (nu o companie privată) încalcă art. 5. Cine aplică amenda și în ce cuantum maxim?",
+          options: [
+            "Oficiul pentru IA, până la 35.000.000 EUR",
+            "Autoritatea Europeană pentru Protecția Datelor (EDPS), până la 1.500.000 EUR",
+            "Consiliul european pentru IA, până la 750.000 EUR",
+            "Instituțiile UE sunt exceptate de la sancțiuni"
+          ],
+          correct: 1,
+          explanation: "Art. 100: pentru instituțiile/organele/agențiile UE, Autoritatea Europeană pentru Protecția Datelor (EDPS) poate aplica amenzi de până la 1.500.000 EUR pentru încălcarea art. 5, respectiv până la 750.000 EUR pentru alte încălcări."
+        },
+        {
+          type: "flashcard", front: "Amendă art. 5 (practici interzise)", back: "Până la 35.000.000 EUR sau 7% din cifra de afaceri mondială — valoarea mai mare (mai mică pentru IMM-uri)."
+        },
+        {
+          type: "flashcard", front: "Amendă alte obligații", back: "Până la 15.000.000 EUR sau 3% din cifra de afaceri mondială."
+        },
+        {
+          type: "flashcard", front: "Amendă informații incorecte", back: "Până la 7.500.000 EUR sau 1% din cifra de afaceri mondială."
+        },
+        {
+          type: "flashcard", front: "Instituții UE (art. 100)", back: "1.500.000 EUR (art. 5) / 750.000 EUR (alte încălcări) — aplicate de EDPS."
+        }
+      ]
+    }
+  ]
+},
+{
+  id: 9, status: "full", icon: "calendar", color: "info",
+  title: "Calendarul de aplicare",
+  subtitle: "Linia temporală completă, inclusiv modificările Omnibus 2026",
+  summary: "AI Act se aplică eșalonat, pe capitole, potrivit art. 113 — iar Regulamentul (UE) 2026/1744 a amânat unele termene inițiale din 2024 și a introdus altele noi.",
+  articles: ["art. 113"],
+  lessons: [
+    {
+      id: "9-1", title: "Linia temporală, dată cu dată",
+      xp: 35,
+      cards: [
+        { type:"info", title:"Atenție la termenele schimbate", body:"Dacă ai învățat calendarul AI Act înainte de 2026, două termene importante NU mai sunt cele din 2024: aplicarea cerințelor pentru sistemele de risc ridicat de sine stătătoare (anexa III) a fost amânată de la 2 august 2026 la 2 decembrie 2027, iar cea pentru sistemele de risc ridicat integrate în produse (anexa I) a fost amânată de la 2 august 2027 la 2 august 2028." }
+      ],
+      exercises: [
+        {
+          type: "timeline",
+          prompt: "Așază aceste momente pe axa timpului, în ordine cronologică:",
+          items: [
+            { id:"t1", label:"Intrarea în vigoare a Regulamentului (UE) 2024/1689", date:"1 august 2024" },
+            { id:"t2", label:"Se aplică Cap. I-II (dispoziții generale, definiții, practici interzise art. 5)", date:"2 februarie 2025" },
+            { id:"t3", label:"Se aplică organismele notificate, GPAI, guvernanța, sancțiunile (exc. art. 101), art. 78", date:"2 august 2025" },
+            { id:"t4", label:"Aplicare generală, inclusiv art. 50 (transparență)", date:"2 august 2026" },
+            { id:"t5", label:"Noile interdicții art. 5 (ba, bb) + expiră grația watermarking", date:"2 decembrie 2026" },
+            { id:"t6", label:"Termen operaționalizare sandbox-uri IA (amânat prin Omnibus)", date:"2 august 2027" },
+            { id:"t7", label:"Cerințe risc ridicat — anexa III, de sine stătătoare (amânat prin Omnibus)", date:"2 decembrie 2027" },
+            { id:"t8", label:"Cerințe risc ridicat — anexa I, componente de siguranță (amânat prin Omnibus)", date:"2 august 2028" },
+            { id:"t9", label:"Termen sisteme informatice UE la scară largă / autorități publice", date:"2 august 2030" }
+          ],
+          explanation: "Cele patru date din 2024 (1 aug 2024, 2 feb 2025, 2 aug 2025, 2 aug 2026) rămân neschimbate de Omnibus 2026. Toate celelalte cinci date sunt fie noi, fie amânate."
+        },
+        {
+          type: "mcq",
+          prompt: "Ce se aplică începând cu 2 februarie 2025?",
+          options: ["Toate obligațiile pentru risc ridicat", "Capitolele I-II: dispoziții generale, definiții și practicile interzise de la art. 5", "Doar sancțiunile", "Obligațiile GPAI"],
+          correct: 1,
+          explanation: "2 februarie 2025 este prima dată de aplicare eșalonată: Cap. I (dispoziții generale) și Cap. II (practici interzise, art. 5)."
+        },
+        {
+          type: "truefalse",
+          prompt: "Termenul de 2 august 2026 pentru aplicarea generală a regulamentului, inclusiv art. 50, a fost modificat prin Omnibus 2026.",
+          correct: false,
+          explanation: "Fals. 2 august 2026 rămâne data aplicării generale, neschimbată — inclusiv pentru art. 50. Omnibus 2026 a introdus însă o grație de 4 luni (până la 2 decembrie 2026) pentru marcarea conținutului sintetic al sistemelor deja existente la acea dată."
+        },
+        {
+          type: "matchArticle",
+          prompt: "O companie dezvoltă un sistem de IA de risc ridicat de sine stătător, listat în anexa III (ex: sistem de recrutare automatizată). Conform calendarului ACTUAL (post-Omnibus), din ce dată trebuie să respecte integral cerințele pentru risc ridicat?",
+          options: [
+            { key:"2027", label:"2 decembrie 2027" },
+            { key:"2026", label:"2 august 2026" },
+            { key:"2028", label:"2 august 2028" },
+            { key:"2030", label:"2 august 2030" }
+          ],
+          correct: "2027",
+          explanation: "2 decembrie 2027 este noul termen (amânat prin Omnibus 2026 de la 2 august 2026) pentru sistemele de risc ridicat de sine stătătoare din anexa III — categorie în care intră majoritatea sistemelor de recrutare, credit scoring, educație etc."
+        },
+        {
+          type: "mcq",
+          prompt: "Ce este specific pentru 2 august 2028?",
+          options: [
+            "Aplicarea generală a regulamentului",
+            "Cerințele pentru sisteme de risc ridicat care sunt COMPONENTE DE SIGURANȚĂ în produse deja reglementate de legislația UE de armonizare (anexa I — ex: dispozitive medicale, jucării, ascensoare, mașini)",
+            "Interdicțiile din art. 5",
+            "Operaționalizarea sandbox-urilor"
+          ],
+          correct: 1,
+          explanation: "2 august 2028 (amânat prin Omnibus de la 2 august 2027) este termenul pentru sistemele de risc ridicat care sunt componente de siguranță în produse reglementate deja de legislația de armonizare a UE — anexa I."
+        },
+        {
+          type: "flashcard", front: "2 februarie 2025", back: "Cap. I-II: dispoziții generale, definiții, practici interzise (art. 5)." },
+        { type: "flashcard", front: "2 august 2025", back: "Organisme notificate, GPAI (cap. V), guvernanță (cap. VII), sancțiuni (exc. art. 101), art. 78." },
+        { type: "flashcard", front: "2 august 2026", back: "Aplicare generală, inclusiv art. 50 (transparență)." },
+        { type: "flashcard", front: "2 decembrie 2026", back: "NOU: interdicțiile art. 5 (ba, bb) + expiră grația watermarking (4 luni)." },
+        { type: "flashcard", front: "2 decembrie 2027", back: "MODIFICAT (amânat de la 2 aug 2026): risc ridicat, anexa III, de sine stătător." },
+        { type: "flashcard", front: "2 august 2028", back: "MODIFICAT (amânat de la 2 aug 2027): risc ridicat, anexa I, componentă de siguranță." }
+      ]
+    }
+  ]
+},
+{
+  id: 10, status: "skeleton", icon: "fork", color: "neutral",
+  title: "Trasee pe rol",
+  subtitle: "Furnizor / Implementator / DPO-Jurist / Product & Tech",
+  summary: "Fiecare rol profesional are un accent diferit în aplicarea AI Act: furnizorii răspund în special de conformitatea tehnică a sistemului (art. 8-29), implementatorii de utilizarea corectă și supravegherea umană, responsabilii de conformitate de coordonarea integrală (inclusiv sancțiuni și guvernanță), iar echipele de produs/tech de integrarea cerințelor încă din faza de design. Traseul tău e ales din ecranul inițial și evidențiază modulele relevante.",
+  articles: [],
+  teaser: "Checklist-uri practice per rol — în pregătire. Traseul tău curent e deja setat din onboarding și evidențiat în arborele de module."
+},
+{
+  id: 11, status: "skeleton", icon: "casefile", color: "neutral",
+  title: "Studii de caz și simulări",
+  subtitle: "Scenarii realiste de conformitate",
+  summary: "Exemplu de scenariu care va fi dezvoltat complet: „Compania X vrea să lanseze un chatbot de recrutare care filtrează CV-uri automat — ce obligații are?” — atinge cel puțin: clasificarea de risc (probabil risc ridicat, anexa III — ocuparea forței de muncă), obligațiile de transparență (art. 50, informarea candidaților că interacționează cu IA), evaluarea impactului asupra drepturilor fundamentale (art. 27) și termenul de conformare aplicabil (2 decembrie 2027 pentru anexa III, de sine stătător).",
+  articles: ["anexa III", "art. 27", "art. 50"],
+  teaser: "Simulări complete în pregătire. Combină deja ce ai învățat în Modulul 2, 8 și 9 — folosește Verificatorul de risc și Calculatorul de amenzi ca exercițiu mental pe acest scenariu."
+}
+],
+
+/* ---------------- GLOSAR — art. 3, verificat ---------------- */
+glossary: [
+  { term:"Sistem de IA", article:"art. 3 pct. 1", def:"Un sistem bazat pe mașini, proiectat să funcționeze cu niveluri variabile de autonomie și care poate manifesta capacitate de adaptare după implementare, și care, pentru obiective explicite sau implicite, deduce, din datele de intrare primite, modul de generare a unor rezultate cum ar fi previziuni, conținut, recomandări sau decizii, care pot influența medii fizice sau virtuale." },
+  { term:"Furnizor", article:"art. 3 pct. 3", def:"Persoană fizică sau juridică, autoritate publică, agenție sau alt organism care dezvoltă un sistem de IA sau un model de IA de uz general, sau care are dezvoltat un astfel de sistem/model, și îl introduce pe piață sau pune în funcțiune sistemul de IA sub propriul nume/marcă, cu titlu oneros sau gratuit." },
+  { term:"Implementator", article:"art. 3 pct. 4", def:"Persoană fizică sau juridică, autoritate publică, agenție sau alt organism care utilizează un sistem de IA sub autoritatea sa, cu excepția cazului în care sistemul este folosit în cadrul unei activități personale cu caracter neprofesional." },
+  { term:"Model de IA de uz general (GPAI)", article:"art. 3 pct. 63", def:"Un model de IA, inclusiv atunci când este antrenat cu o cantitate mare de date folosind auto-supravegherea la scară, care prezintă o generalitate semnificativă și este capabil să îndeplinească în mod competent o gamă largă de sarcini distincte, indiferent de modul în care modelul este introdus pe piață, și care poate fi integrat într-o varietate de sisteme sau aplicații din aval." },
+  { term:"Punerea pe piață", article:"art. 3 pct. 9", def:"Prima punere la dispoziție a unui sistem de IA sau a unui model de IA de uz general pe piața Uniunii." },
+  { term:"Punerea în funcțiune", article:"art. 3 pct. 11", def:"Furnizarea unui sistem de IA pentru prima utilizare directă către implementator sau pentru uz propriu în Uniune, în scopul prevăzut al acestuia." },
+  { term:"Risc sistemic", article:"art. 3 pct. 65", def:"Un risc specific capacităților de mare impact ale modelelor de IA de uz general, care are un impact semnificativ asupra pieței Uniunii datorită razei lor de acțiune, ori din cauza efectelor negative reale sau previzibile în mod rezonabil asupra sănătății publice, siguranței, securității publice, drepturilor fundamentale sau asupra societății în ansamblu, ce pot fi propagate la scară largă pe tot lanțul valoric." },
+  { term:"Sistem de IA cu risc ridicat", article:"art. 6", def:"Sistem de IA care fie este o componentă de siguranță a unui produs reglementat de legislația UE de armonizare din anexa I, fie se încadrează într-una dintre categoriile de utilizare de sine stătătoare enumerate în anexa III (cu excepțiile aplicabile prevăzute la art. 6 alin. (3))." },
+  { term:"Identificare biometrică la distanță", article:"art. 3 pct. 41-42", def:"Identificarea automatizată a unei persoane fizice, la distanță, prin compararea datelor sale biometrice cu datele dintr-o bază de referință, fără implicarea activă a persoanei vizate — poate fi „în timp real” sau „ex-post” (a posteriori)." },
+  { term:"Conținut sintetic (deepfake)", article:"art. 3 pct. 60", def:"Conținut de tip imagine, audio sau video generat sau manipulat prin IA, care seamănă considerabil cu persoane, obiecte, locuri, entități sau evenimente existente și care ar putea fi perceput în mod eronat de o persoană ca fiind autentic sau veridic." }
+],
+
+/* ---------------- CALENDAR APLICARE (sursa unică, folosită și în Modulul 9) ---------------- */
+calendar: [
+  { date:"1 august 2024", iso:"2024-08-01", title:"Intrarea în vigoare", desc:"Regulamentul (UE) 2024/1689 intră în vigoare (a 20-a zi de la publicarea în JOUE, 12.7.2024).", omnibus:false, article:"art. 113" },
+  { date:"2 februarie 2025", iso:"2025-02-02", title:"Cap. I-II aplicabile", desc:"Dispoziții generale, definiții și practicile interzise (art. 5).", omnibus:false, article:"art. 113 lit. (a)" },
+  { date:"2 august 2025", iso:"2025-08-02", title:"GPAI, guvernanță, sancțiuni, organisme notificate", desc:"Cap. III secțiunea 4 (organisme notificate), Cap. V (GPAI), Cap. VII (guvernanță), Cap. XII (sancțiuni, exc. art. 101) și art. 78 (confidențialitate).", omnibus:false, article:"art. 113 lit. (b)" },
+  { date:"2 august 2026", iso:"2026-08-02", title:"Aplicare generală", desc:"Aplicarea generală a regulamentului, inclusiv art. 50 (transparență).", omnibus:false, article:"art. 113" },
+  { date:"2 decembrie 2026", iso:"2026-12-02", title:"Noile interdicții 2026 + expiră grația watermarking", desc:"Intră în aplicare interdicțiile noi din art. 5 (CSAM și conținut intim/sexual neconsimțit) și expiră perioada de grație de 4 luni pentru marcarea conținutului sintetic al sistemelor deja existente la 2 august 2026.", omnibus:true, article:"art. 5 lit. (ba), (bb); art. 50" },
+  { date:"2 august 2027", iso:"2027-08-02", title:"Sandbox-uri operaționale (amânat)", desc:"Termen pentru operaționalizarea spațiilor de testare în materie de reglementare (sandbox-uri IA) — amânat prin Omnibus.", omnibus:true, article:"art. 57" },
+  { date:"2 decembrie 2027", iso:"2027-12-02", title:"Risc ridicat — anexa III (amânat)", desc:"Aplicarea cerințelor pentru sisteme de IA cu risc ridicat de sine stătătoare, enumerate în anexa III — amânat de la 2 august 2026.", omnibus:true, article:"art. 6 alin. (2); anexa III" },
+  { date:"2 august 2028", iso:"2028-08-02", title:"Risc ridicat — anexa I (amânat)", desc:"Aplicarea cerințelor pentru sisteme de IA cu risc ridicat care sunt componente de siguranță în produse reglementate deja de legislația de armonizare a UE (anexa I — ex. dispozitive medicale, jucării, ascensoare, mașini, echipamente sub presiune) — amânat de la 2 august 2027.", omnibus:true, article:"art. 6 alin. (1); anexa I" },
+  { date:"2 august 2030", iso:"2030-08-02", title:"Sisteme la scară largă UE / autorități publice", desc:"Termen de conformare pentru sistemele de IA cu risc ridicat care fac parte din sisteme informatice la scară largă ale UE și pentru cele deja utilizate de autorități publice.", omnibus:false, article:"recital 177" }
+],
+
+/* ---------------- SANCȚIUNI — calculator ilustrativ ---------------- */
+fines: {
+  tiers: [
+    { id:"art5", label:"Practici interzise (art. 5)", cap:35000000, pct:0.07, article:"art. 99 alin. (3)" },
+    { id:"other", label:"Alte obligații (furnizori, importatori, distribuitori, implementatori, organisme notificate, transparență)", cap:15000000, pct:0.03, article:"art. 99 alin. (4)" },
+    { id:"info", label:"Informații incorecte/incomplete/înșelătoare către autorități", cap:7500000, pct:0.01, article:"art. 99 alin. (5)" }
+  ],
+  smeRule: "Pentru IMM-uri, inclusiv startup-uri, se aplică plafonul MAI MIC dintre cele două valori (suma fixă vs. procent din cifra de afaceri) — nu cel mai mare, ca la întreprinderile mari.",
+  euInstitutions: [
+    { id:"art5", label:"Practici interzise (art. 5)", cap:1500000, article:"art. 100" },
+    { id:"other", label:"Alte încălcări", cap:750000, article:"art. 100" }
+  ],
+  euInstitutionsAuthority: "Autoritatea Europeană pentru Protecția Datelor (EDPS)"
+},
+
+/* ---------------- BIBLIOTECĂ DE SURSE ---------------- */
+sources: [
+  { label:"Regulamentul (UE) 2024/1689 — text consolidat RO (EUR-Lex)", url:"https://eur-lex.europa.eu/legal-content/RO/TXT/?uri=CELEX:02024R1689-20260727" },
+  { label:"Regulamentul (UE) 2026/1744 — Digital Omnibus (EUR-Lex, RO)", url:"https://eur-lex.europa.eu/eli/reg/2026/1744/oj/ron" },
+  { label:"Art. 5 — Practici interzise (EUR-Lex, text consolidat)", url:"https://eur-lex.europa.eu/legal-content/RO/TXT/?uri=CELEX:02024R1689-20260727#art_5" },
+  { label:"Art. 99-101 — Sancțiuni (EUR-Lex, text consolidat)", url:"https://eur-lex.europa.eu/legal-content/RO/TXT/?uri=CELEX:02024R1689-20260727#art_99" },
+  { label:"Art. 113 — Intrare în vigoare și aplicare (EUR-Lex, text consolidat)", url:"https://eur-lex.europa.eu/legal-content/RO/TXT/?uri=CELEX:02024R1689-20260727#art_113" },
+  { label:"CJUE C-634/21 (SCHUFA) — context conex, NU jurisprudență directă pe AI Act", url:"https://curia.europa.eu/juris/liste.jsf?num=C-634/21", note:"Privește scoring-ul automatizat sub RGPD (decizii automatizate, art. 22). Relevant conceptual pentru practicile de scoring de la art. 5 AI Act, dar nu este o hotărâre pronunțată în aplicarea AI Act." },
+  { label:"CEDO — S. and Marper v. Regatul Unit — context conex, NU jurisprudență directă pe AI Act", url:"https://hudoc.echr.coe.int/eng?i=001-90051", note:"Privește păstrarea datelor biometrice (ADN, amprente) de către stat. Relevant conceptual pentru capitolul biometrie al AI Act, dar nu este o hotărâre pronunțată în aplicarea AI Act." }
+]
+
+};
